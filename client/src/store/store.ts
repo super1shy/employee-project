@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './slices/authSlice';
+import employeesSlice from './slices/employeesSlice';
 import { api } from './services/api';
 import { listenerMiddleware } from '../middleware/auth';
 
@@ -7,6 +8,7 @@ export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     authSlice,
+    employeesSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

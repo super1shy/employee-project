@@ -23,6 +23,7 @@ const all = async (req, res) => {
 const add = async (req, res) => {
   try {
     const data = req.body;
+    data.userId = req.user.id;
 
     if (!data.firstName || !data.lastName || !data.address || !data.age) {
       return res

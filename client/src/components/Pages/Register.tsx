@@ -24,7 +24,7 @@ export const Register = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate(Paths.home);
     }
   }, [user, navigate]);
 

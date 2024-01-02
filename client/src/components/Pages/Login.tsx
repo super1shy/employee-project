@@ -21,7 +21,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate(Paths.home);
     }
   }, [user, navigate]);
 
@@ -29,7 +29,7 @@ export const Login = () => {
     try {
       // unwrap ~ json parse
       await loginUser(data).unwrap();
-      navigate('/');
+      navigate(Paths.home);
     } catch (err) {
       const maybeError = isErrorWithMessage(err);
 
