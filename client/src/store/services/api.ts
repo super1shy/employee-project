@@ -1,11 +1,18 @@
-import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query';
+import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:3000/api',
-  // prepareHeaders: (headers, { getState }) => {
-  //   const token = getstate() as RootState
-  // },
+  prepareHeaders: (headers, { getState }) => {
+    const token =
+      (getState() as RootState).authSlice.user?.token ||
+      localStorage.getItem('token');
+
+    if (token) {
+      headers.set('authorization', `Bearer ${token}`);
+    }
+    return headers;
+  },
 });
 
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 1 });

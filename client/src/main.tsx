@@ -6,13 +6,16 @@ import React from 'react';
 import { store } from './store/store.ts';
 import App from './App.tsx';
 import './index.css';
+import { Auth } from './components/IsLoading.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Auth>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Auth>
     </Provider>
   </React.StrictMode>
 );

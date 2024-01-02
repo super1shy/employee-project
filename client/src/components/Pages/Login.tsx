@@ -1,5 +1,5 @@
 import { Row, Card, Form, Space, Typography } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useNavigate, Link } from 'react-router-dom';
 import { UserData, useLoginMutation } from '../../store/services/auth';
@@ -10,18 +10,20 @@ import { CustomButton } from '../UI/Button';
 import { Layout } from '../Layout/Layout';
 import { CustomInput } from '../UI/Input';
 import { Paths } from '../../paths';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../store/slices/authSlice';
 
 export const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
-  // const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
   const [loginUser, loginUserResult] = useLoginMutation();
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate('/');
-  //   }
-  // }, [user, navigate]);
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const login = async (data: UserData) => {
     try {
