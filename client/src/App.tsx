@@ -5,6 +5,7 @@ import { Employees } from './components/Pages/Employees/Employees';
 import { EmployeeAdd } from './components/Pages/Employees/EmployeeAdd';
 import { Paths } from './paths';
 import { Employee } from './components/Pages/Employees/Employee';
+import { EditEmployee } from './components/Pages/Employees/EditEmployee';
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
       <Route path={Paths.home} element={<Employees />}></Route>
       <Route path={Paths.employeeAdd} element={<EmployeeAdd />}></Route>
       <Route path={`${Paths.employee}/:id`} element={<Employee />}></Route>
+      <Route
+        path={`${Paths.employeeEdit}/:id`}
+        element={<EditEmployee />}
+      ></Route>
     </Routes>
   );
 }

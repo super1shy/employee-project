@@ -52,36 +52,36 @@ export const Employee = () => {
       if (maybeError) {
         setError(err.data.message);
       } else {
-        setError('Неизвестная ошибка');
+        setError('Unknown error');
       }
     }
   };
 
   return (
     <Layout>
-      <Descriptions title="Информация о сотруднике" bordered>
+      <Descriptions title="Information about an employee" bordered>
         <Descriptions.Item
-          label="Имя"
+          label="Name"
           span={3}
         >{`${data.firstName} ${data.lastName}`}</Descriptions.Item>
-        <Descriptions.Item label="Возраст" span={3}>
+        <Descriptions.Item label="Age" span={3}>
           {data.age}
         </Descriptions.Item>
-        <Descriptions.Item label="Адрес" span={3}>
+        <Descriptions.Item label="Address" span={3}>
           {data.address}
         </Descriptions.Item>
       </Descriptions>
       {user?.id === data.userId && (
         <>
-          <Divider orientation="left">Действия</Divider>
+          <Divider orientation="left">Actions</Divider>
           <Space>
-            <Link to={`/employee/edit/${data.id}`}>
+            <Link to={`${Paths.employeeEdit}/${data.id}`}>
               <CustomButton
                 shape="round"
                 type="default"
                 icon={<EditOutlined />}
               >
-                Редактировать
+                Update
               </CustomButton>
             </Link>
             <CustomButton
@@ -90,21 +90,21 @@ export const Employee = () => {
               onClick={showModal}
               icon={<DeleteOutlined />}
             >
-              Удалить
+              Delete
             </CustomButton>
           </Space>
         </>
       )}
       <ErrorMessage message={error} />
       <Modal
-        title="Подтвердите удаление"
+        title="Confirm delete action"
         open={isModalOpen}
         onOk={handleDeleteUser}
         onCancel={hideModal}
-        okText="Подтвердить"
-        cancelText="Отменить"
+        okText="Confirm"
+        cancelText="Cancel"
       >
-        Вы действительно хотите удалить сотрудника из таблицы?
+        Are you sure you wan to delete current employee?
       </Modal>
     </Layout>
   );

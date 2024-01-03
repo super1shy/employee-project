@@ -46,7 +46,7 @@ const add = async (req, res) => {
  * @access Private
  */
 const remove = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
 
   try {
     await Employee.destroy({ where: { id } });

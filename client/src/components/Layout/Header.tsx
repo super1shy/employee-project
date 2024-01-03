@@ -30,7 +30,7 @@ export const Header: FC = () => {
     <Layout.Header className={styles.header}>
       <Space>
         <TeamOutlined className={styles.teamIcon} />
-        <Link to="/">
+        <Link to="/employees">
           <CustomButton type="ghost">
             <Typography.Title level={1}>Employees</Typography.Title>
           </CustomButton>
